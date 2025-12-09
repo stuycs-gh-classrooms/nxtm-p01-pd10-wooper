@@ -36,16 +36,51 @@ Controls:
   - Mousepressed as an alternate control for shooting
 
 Classes:
-- class Player{
+- class Player {
   - Instance Vars:
     - PVector position;
     - int health;
     - int lives;
   - Methods
-    - void display(int size)
+    - Player(PVector position, int health, int lives)
+    - void display()
     - void shoot()
+    - boolean ifHit(PVector projectilePos)
+    - boolean ifZeroHealth(int health)
+    - boolean ifDead(int lives)
 - }
-Not yet finished
+
+- class Projectile {
+  - Instance Vars:
+    - PVector position;
+    - int origin; //who fired it, player or enemy
+    - int velocity;
+    - int type;
+  - Methods:
+    - Projectile(int origin, int velocity, int type)
+    - void display()
+    - void move(int projectileSpeed)
+    - boolean outOfBounds(PVector position)
+- }
+
+- class Enemy {
+  - Instance vars:
+    - PVector position;
+    - int health;
+    - int type; //different variants of enemies
+    - int pathType;//different paths for different types of enemies
+    - int projectileType;//different types of projectiles for different types of enemies
+    - int speed;
+  - Methods:
+    - Enemy(PVector position, int type, int speed, int health)
+    - void display()
+    - void move(PVector pos, int path, int speed)
+    - void shoot(int type)
+    - int variantPath()
+    - int variantProjectileType()
+    - boolean collisionCheck(PVector projectilePos)
+    - boolean ifAlive(int health)
+- }
 
 
 
